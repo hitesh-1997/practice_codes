@@ -12,9 +12,7 @@ from threading import Condition
 from threading import current_thread
 import heapq
 
-import statistics
-
-# Extention: Ensure no startvation for one possible gender
+# Extension: Ensure no startvation for one possible gender
 
 class UnisexBathroom:
 
