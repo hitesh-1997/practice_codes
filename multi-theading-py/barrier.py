@@ -26,6 +26,8 @@ class Barrier:
             print(f"Thread: {id} Waiting .... ")
             self.cv.wait()
         elif self._count==self.n:
+            # reuse the barrier -> set count 0
+            self._count=0
             self.cv.notify_all()
         
         # release here b/c when wait done, thread re-acquire lock which needs to be released again
