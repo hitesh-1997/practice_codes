@@ -51,8 +51,6 @@ class Model:
 def normalize(X_train: np.array, X_test: np.array):
     means = X_train.mean(axis=0)
     vars = X_train.std(axis=0)
-    # log.info(f"means are : {means}, std dev: {vars}")
-    # Check if vars are 0 anywhere case.
     X_train = (X_train-means)/vars
     X_test = (X_test-means)/vars
     return X_train, X_test
@@ -74,11 +72,8 @@ if __name__ == "__main__":
         y = (iris.target != 0) * 1
         M, N = X.shape[0], X.shape[1]
 
-    # log.info(f"features:\n {X}, y:\n: {y}")
     X_train, X_test, y_train, y_test = train_test_split(X, y)
-    # log.info(f"X_train:\n {X_train}, X_test:\n: {X_test}, y_train:\n {y_train}, y_test:\n: {y_test}")
     X_train, X_test = normalize(X_train, X_test)
-    # log.info(f"X_train:\n {X_train}, X_test:\n: {X_test}")
 
     model = Model(log, X_train.shape[1])
     model.fit(X_train, y_train)
